@@ -7,36 +7,28 @@ public class FishMovement : MonoBehaviour
     public float movement_speed = 100;
     public float rotation_speed = 100;
 
-
     private Rigidbody rb;
     public GameObject main_camera;
     private Vector3 movement;
     
-
-    
-    void Start()
+   void Start()
     {
+        Cursor.lockState = CursorLockMode.Locked;
         rb = GetComponent<Rigidbody>();
-        //transform.eulerAngles = new Vector3(0, 0, 0);
-        //Camera.main.transform.eulerAngles = new Vector3(0, 0, 0);
     }
 
-    /*private void Update()
+    void Update()
     {
-        transform.Rotate(0, Input.GetAxis("Mouse X") * Time.deltaTime * rotation_speed, -Input.GetAxis("Mouse Y") * Time.deltaTime * rotation_speed);
-        movement = main_camera.transform.forward;
-
-        transform.position += movement * movement_speed * Time.deltaTime;
-    }*/
-
+        //LB toto spravne rotuje:
+        transform.Rotate(0, Input.GetAxis("Mouse X") * Time.deltaTime * rotation_speed, 0, Space.World );
+        transform.Rotate(-Input.GetAxis("Mouse Y") * Time.deltaTime * rotation_speed, 0, 0);
+     }
+    
     void FixedUpdate()
     {
-        transform.Rotate(0, Input.GetAxis("Mouse X") * Time.deltaTime * rotation_speed, -Input.GetAxis("Mouse Y") * Time.deltaTime * rotation_speed, Space.World);
-        Debug.Log(transform.rotation);
-
+        //LB toto ma movement spravny
         movement = main_camera.transform.forward;
         Debug.Log(movement);
-        rb.AddForce(movement * movement_speed * Time.deltaTime);
-
-    }
+        rb.transform.position += movement * movement_speed * Time.deltaTime;
+   }
 }
