@@ -49,11 +49,12 @@ public class FishMovement : MonoBehaviour
 
         transform.Rotate(new Vector3(0, Input.GetAxis("Mouse X") * Time.deltaTime * rotation_speed, 0), Space.World);
         transform.Rotate(new Vector3(-Input.GetAxis("Mouse Y") * Time.deltaTime * rotation_speed, 0, 0));
+        
         //main_camera.transform.Rotate(new Vector3(0, Input.GetAxis("Mouse X") * Time.deltaTime * rotation_speed, 0), Space.World);
         //main_camera.transform.Rotate(new Vector3(-Input.GetAxis("Mouse Y") * Time.deltaTime * rotation_speed, 0, 0));
 
         movement = transform.TransformDirection(Vector3.forward);
-        //Debug.Log(movement);
+        
 
         //if (IsColliding == false)
         {

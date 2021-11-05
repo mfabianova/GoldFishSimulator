@@ -18,6 +18,9 @@ public class Spawner : MonoBehaviour
     public float max_x = 15;
     public float max_z = 15;
 
+    public float min_scale = 0.2f;
+    public float max_scale = 0.5f;
+
     private float currentTime;
     private float spawnTime;
 
@@ -45,9 +48,12 @@ public class Spawner : MonoBehaviour
             float pos_x = Random.Range(min_x, max_x);
             float pos_z = Random.Range(min_z, max_z);
 
+            float scale = Random.Range(min_scale, max_scale);
+
             Vector3 Position = new Vector3(pos_x, 20, pos_z);
             GameObject a = Instantiate(foodPrefab);
             a.transform.position = Position;
+            a.transform.localScale = new Vector3(scale,scale,scale);
 
             spawnTime = Random.Range(minBetweenTime, maxBetweenTime);
         }
