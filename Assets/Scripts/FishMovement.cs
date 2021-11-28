@@ -22,17 +22,28 @@ public class FishMovement : MonoBehaviour
     private Vector3 start_p;
     private Vector3 end_p;
     private float direction = -1;
-    
-    
+
+    public TimerScript timer;
+    private float time;
+    private int amount = 20;
     void Start()
     {
         offset =  main_camera.transform.position - transform.position;
         rb = GetComponent<Rigidbody>();
+        time = 100f;
+        timer.SetMaxTime();
     }
 
     private void Update()
     {
-        
+        if (time < 1)
+        {
+            //cue game over
+        }
+        time -= 1 * Time.deltaTime;
+        timer.SetTime(time);
+        Debug.Log(time);
+
         if (IsFlyingBack)
         {
             transform.position = Vector3.Lerp(start_p, end_p, t);
@@ -52,13 +63,12 @@ public class FishMovement : MonoBehaviour
             return;
         }
 
+        
         transform.Rotate(new Vector3(0, Input.GetAxis("Mouse X") * Time.deltaTime * rotation_speed, 0), Space.World);
         transform.Rotate(new Vector3(-Input.GetAxis("Mouse Y") * Time.deltaTime * rotation_speed, 0, 0));
-
-        //main_camera.transform.Rotate(new Vector3(0, Input.GetAxis("Mouse X") * Time.deltaTime * rotation_speed, 0), Space.World);
-        //main_camera.transform.Rotate(new Vector3(-Input.GetAxis("Mouse Y") * Time.deltaTime * rotation_speed, 0, 0));
-
         
+
+
         movement = transform.TransformDirection(Vector3.forward);
         
 
@@ -72,35 +82,40 @@ public class FishMovement : MonoBehaviour
 
     private void LateUpdate()
     {
-        //if (IsColliding == false)
-        {
+        
+        
             main_camera.transform.position = transform.position + transform.TransformDirection(offset);
             main_camera.transform.LookAt(transform.position);
-        }
+        
     }
     private void OnCollisionEnter(Collision collision)
     {
-        //if(collision.gameObject.CompareTag("CatPaw"))
+        if (time < amount)
         {
-            
-            if(IsFlyingBack == true)
-            {
-                direction = -direction;
-                Debug.Log("Change of direction: "+ direction);
-                slow_down = 0.5f * slow_down;
-                
-            }
-            IsFlyingBack = true;
-
-            start_p = transform.position;
-            end_p = transform.position + transform.TransformDirection(direction * Vector3.forward * back_speed * slow_down);
-            
-
-            t = 0.0f;
+            //cue game over screen
         }
+        time = time - amount;
+        timer.SetTime(time);
+        if(IsFlyingBack == true)
+        {
+            direction = -direction;
+            Debug.Log("Change of direction: "+ direction);
+            slow_down = 0.5f * slow_down;
+                
+        }
+        IsFlyingBack = true;
+
+        start_p = transform.position;
+        end_p = transform.position + transform.TransformDirection(direction * Vector3.forward * back_speed * slow_down);
+            
+
+        t = 0.0f;
+        
     }        
     private void OnTriggerEnter(Collider other)
     {
+        time = time + amount;
+        timer.SetTime(time);
         Destroy(other.gameObject);
     }
 }
