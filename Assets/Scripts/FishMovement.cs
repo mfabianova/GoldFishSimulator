@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 
 public class FishMovement : MonoBehaviour
 {
@@ -28,7 +28,7 @@ public class FishMovement : MonoBehaviour
     private int amount = 20;
     void Start()
     {
-        offset =  main_camera.transform.position - transform.position;
+        offset = transform.position - main_camera.transform.position;
         rb = GetComponent<Rigidbody>();
         time = 100f;
         timer.SetMaxTime();
@@ -38,7 +38,8 @@ public class FishMovement : MonoBehaviour
     {
         if (time < 1)
         {
-            //cue game over
+            SceneManager.LoadScene("gameover", LoadSceneMode.Single);
+            return;
         }
         time -= 1 * Time.deltaTime;
         timer.SetTime(time);
@@ -46,10 +47,10 @@ public class FishMovement : MonoBehaviour
 
         if (IsFlyingBack)
         {
-            transform.position = Vector3.Lerp(start_p, end_p, t);
+            main_camera.transform.position = Vector3.Lerp(start_p, end_p, t);
             t += Time.deltaTime;
-            
-            if(t < 1.0f)
+
+            if (t < 1.0f)
             {
                 IsFlyingBack = true;
             }
@@ -57,61 +58,57 @@ public class FishMovement : MonoBehaviour
             {
                 IsFlyingBack = false;
                 slow_down = 1;
-                
+
             }
             
             return;
         }
 
-        
-        transform.Rotate(new Vector3(0, Input.GetAxis("Mouse X") * Time.deltaTime * rotation_speed, 0), Space.World);
-        transform.Rotate(new Vector3(-Input.GetAxis("Mouse Y") * Time.deltaTime * rotation_speed, 0, 0));
-        
+
+        //main_camera.transform.Rotate(new Vector3(0, Input.GetAxis("Mouse X") * Time.deltaTime * rotation_speed, 0), Space.World);
+        //main_camera.transform.Rotate(new Vector3(-Input.GetAxis("Mouse Y") * Time.deltaTime * rotation_speed, 0, 0));
 
 
-        movement = transform.TransformDirection(Vector3.forward);
-        
 
-        if (transform.position.y >=15)
+        movement = main_camera.transform.TransformDirection(Vector3.forward);
+
+
+        if (transform.position.y >= 15)
         {
-            transform.position -= new Vector3 (0,0.5f,0);
+            main_camera.transform.position -= new Vector3(0, 0.5f, 0);
         }
-        transform.position += movement * movement_speed * Time.deltaTime;
-        
+        main_camera.transform.position += movement * movement_speed * Time.deltaTime;
+
     }
 
     private void LateUpdate()
     {
-        
-        
-            main_camera.transform.position = transform.position + transform.TransformDirection(offset);
-            main_camera.transform.LookAt(transform.position);
-        
+        transform.position = main_camera.transform.position + main_camera.transform.TransformDirection(offset);
+        transform.LookAt(transform.position - (main_camera.transform.position - transform.position));
     }
     private void OnCollisionEnter(Collision collision)
     {
         if (time < amount)
         {
-            //cue game over screen
+            
         }
         time = time - amount;
         timer.SetTime(time);
-        if(IsFlyingBack == true)
+        if (IsFlyingBack == true)
         {
             direction = -direction;
-            Debug.Log("Change of direction: "+ direction);
+            Debug.Log("Change of direction: " + direction);
             slow_down = 0.5f * slow_down;
-                
         }
         IsFlyingBack = true;
 
-        start_p = transform.position;
-        end_p = transform.position + transform.TransformDirection(direction * Vector3.forward * back_speed * slow_down);
-            
+        start_p = main_camera.transform.position;
+        end_p = main_camera.transform.position + main_camera.transform.TransformDirection(direction * Vector3.forward * back_speed * slow_down);
+
 
         t = 0.0f;
-        
-    }        
+
+    }
     private void OnTriggerEnter(Collider other)
     {
         time = time + amount;
