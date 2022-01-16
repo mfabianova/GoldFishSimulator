@@ -565,8 +565,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PawPrefab: {fileID: 1314398706420504809, guid: 95e9dd4e5b0e6fe408977cc793bb7344, type: 3}
-  minBetweenTime: 5
-  maxBetweenTime: 15
+  minBetweenTime: 1
+  maxBetweenTime: 5
   min_x: -13
   min_z: -13
   max_x: 13
@@ -596,7 +596,7 @@ GameObject:
   - component: {fileID: 496627099}
   - component: {fileID: 496627098}
   m_Layer: 0
-  m_Name: aquarium
+  m_Name: Aquarium
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -878,15 +878,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 82fa90693a9e35040b6d7971fb734b55, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.14
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 82fa90693a9e35040b6d7971fb734b55, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 10.97
+      value: 11.57
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 82fa90693a9e35040b6d7971fb734b55, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.059999943
+      value: -0.599
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 82fa90693a9e35040b6d7971fb734b55, type: 3}
       propertyPath: m_LocalRotation.w
@@ -919,6 +919,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 82fa90693a9e35040b6d7971fb734b55, type: 3}
       propertyPath: m_Name
       value: Jellyfish
+      objectReference: {fileID: 0}
+    - target: {fileID: 6607098724224927440, guid: 82fa90693a9e35040b6d7971fb734b55, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 7155944193644879990, guid: 82fa90693a9e35040b6d7971fb734b55, type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -991,7 +995,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 6b2013720500ef341a1f39368e3dacd5, type: 3}
       propertyPath: m_Name
-      value: table
+      value: Table
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6b2013720500ef341a1f39368e3dacd5, type: 3}
@@ -1185,7 +1189,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963268664}
   m_LocalRotation: {x: -0.07329595, y: 0, z: -0, w: 0.9973103}
-  m_LocalPosition: {x: 0.1, y: -0.2, z: 2.39}
+  m_LocalPosition: {x: 0.04, y: 0.08, z: 2.22}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 963194228}
@@ -1359,7 +1363,7 @@ GameObject:
   - component: {fileID: 1202326936}
   - component: {fileID: 1202326935}
   m_Layer: 0
-  m_Name: jellyemptz
+  m_Name: JellyEmpty
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2984,7 +2988,7 @@ GameObject:
   - component: {fileID: 2558607325178995770}
   - component: {fileID: 2558607325178995769}
   m_Layer: 0
-  m_Name: sand
+  m_Name: Sand
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

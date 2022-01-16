@@ -1476,16 +1476,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Welcome to GoldFish Simulator!
-
-    Experience the cruel hardships of
-    a goldfish on your own!
-
-
-    Tap to select a level
-
-    Double tap to start
-    the selected level'
+  m_text: "Welcome to GoldFish Simulator!\nExperience the cruel hardships of a goldfish
+    on your own!\n\nYou lose time if you bump into cat paws or objects. \nYou gain
+    time if you collect food. \nMake sure your timer doesnt run out!\n\nTap to select
+    a level\nDouble tap to start the selected level"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: e73a58f6e2794ae7b1b7e50b7fb811b0, type: 2}
@@ -1512,8 +1506,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 19.49
-  m_fontSizeBase: 19.49
+  m_fontSize: 12.94
+  m_fontSizeBase: 12.94
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
