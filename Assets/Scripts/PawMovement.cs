@@ -21,7 +21,6 @@ public class PawMovement : MonoBehaviour
         {
             speed = -speed;
         }
-        //find a start and end position and then vector3.lerp instead
         if(transform.position.y > 30)
         {
             Destroy(this.gameObject);

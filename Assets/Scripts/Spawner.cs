@@ -6,7 +6,6 @@ public class Spawner : MonoBehaviour
 {
     //objekt, ktory chcem spawnovat
     public GameObject foodPrefab;
-    
 
     //min a max cas medzi spawnovanim vyberie sa random do spawnTime
     public float minBetweenTime = 10;
@@ -29,14 +28,11 @@ public class Spawner : MonoBehaviour
         //setne aktualny cas na nulu a najde nahodny cas kedy sa spawne food
         currentTime = 0;
         spawnTime = Random.Range(minBetweenTime, maxBetweenTime);
-        
     }
 
     
     void FixedUpdate()
     {
-        //coroutine
-
         //zvysi sa cas
         currentTime += Time.deltaTime;
 

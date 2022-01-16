@@ -9,7 +9,7 @@ public class MenuScriptTap : MonoBehaviour
 {
     private bool tapping;   //ci cakama na 2. klik
     private float lastTapTime = 0;  //cas posledneho kliku
-    private float TimeTolerance = .4f;  //max cas medzi 2 klikmi aby bol dovjklik
+    private float TimeTolerance = .25f;  //max cas medzi 2 klikmi aby bol dovjklik
     private Color colSelected = new Color(0.0f, 0.7020f, 0.4431f, 1.0f); 
     private Color colDeselected = new Color(0.6314f, 0.7804f, 0.7255f, 1.0f);
     public Image EasyRect, MediumRect, HardRect;
@@ -37,13 +37,13 @@ public class MenuScriptTap : MonoBehaviour
                 StartCoroutine(SingleTap());
             }
 
-            if (( Time.time - lastTapTime) < TimeTolerance)
+            if (( Time.unscaledTime - lastTapTime) < TimeTolerance)
             {
                 //nastal doubletap
                 LoadLevel(selected_scene_name);
                 tapping = false;
             }
-            lastTapTime = Time.time;
+            lastTapTime = Time.unscaledTime;
         }
         
     }

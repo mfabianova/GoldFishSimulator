@@ -28,7 +28,6 @@ public class PawSpawner : MonoBehaviour
     {
         currentTime += Time.deltaTime;
 
-        //ak je cas viac ako spawnTime spawn object a restart
         if (currentTime >= spawnTime)
         {
             currentTime = 0;
